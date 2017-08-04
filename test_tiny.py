@@ -1,25 +1,14 @@
-# -*- coding:utf-8 -*-
 from tiny import get, post, run_tiny
 
 
 @get('/')
-def index(request):
-    return 'Indexed!'
-
-
-@get('/hello')
-def greeting(request):
-    return 'Hello World!'
+def index():
+    return ['Indexed!'.encode('utf-8')]
 
 
 @get('/hello/(?P<name>\w+)')
-def personal_greeting(request, name=', world'):
-    return 'Hello %s!' % name
+def personal_greeting(name=', world'):
+    return ['Hello {}!'.format(name).encode('utf-8')]
 
-
-@get('/ct')
-def ct(request):
-    ct.content_type = 'text/plain'
-    return 'Check your Content-Type headers.'
 
 run_tiny()
